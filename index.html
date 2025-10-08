@@ -4,176 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="Images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
     <title>Kiss Mobile Pvt Ltd</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: white; overflow-x: hidden;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0; width: 100%;
-            background: rgba(10,10,10,0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .nav-container {
-            display: flex; justify-content: space-between; align-items: center;
-            max-width: 1200px; margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #fdc101;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Add the styled "K" before the logo text */
-        .logo::before {
-            content: "K";
-            font-size: 2.5rem;
-            color: #c81437;
-            font-family: 'Times New Roman', Times, serif;
-            margin-right: 5px; /* optional spacing */
-        }
-
-
-        /* Desktop links */
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: white; text-decoration: none; transition: color 0.3s ease; cursor: pointer; }
-        .nav-links a:hover, .nav-links a.active { color: #00ff88; }
-
-        /* Hamburger */
-        .hamburger { display: none; font-size: 2rem; cursor: pointer; color: #00ff88; }
-
-        /* Main Content */
-        .main-content { margin-top: 80px; min-height: calc(100vh - 80px); }
-        .section { display: none; padding: 2rem; max-width: 1200px; margin: 0 auto; }
-        .section.active { display: block; animation: fadeInUp 0.5s ease; }
-
-        /* Hero Section */
-        .hero { display: flex; align-items: center; min-height: 80vh; gap: 3rem; padding: 4rem 2rem; }
-        .hero-content { flex: 1; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #00ff88, #00ccff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
-        .hero-buttons { display: flex; gap: 1rem; }
-        .btn-primary { padding: 1rem 2rem; background: linear-gradient(135deg, #00ff88, #00ccff); color: black; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: transform 0.3s ease; }
-        .btn-primary:hover { transform: translateY(-2px); }
-        .btn-outline { padding: 0.5rem 1rem; border: 1px solid #00ff88; background: transparent; color: #00ff88; border-radius: 25px; text-decoration: none; transition: all 0.3s ease; }
-        .btn-outline:hover { background: #00ff88; color: black; }
-
-        .hero-visual { flex: 1; text-align: center; position: relative; }
-        .phone-mockup { width: 300px; height: 600px; background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius: 25px; margin: 0 auto; position: relative; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,255,136,0.3); }
-        .phone-screen { width: 260px; height: 520px; background: linear-gradient(135deg, #000, #1a1a2e); border-radius: 15px; position: absolute; top: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
-
-        /* Sections */
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; color: #00ff88; }
-        .section-header p { font-size: 1.1rem; color: rgba(255,255,255,0.7); }
-
-        .info-grid, .product-grid { display: grid; gap: 2rem; margin-bottom: 3rem; }
-        .info-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .product-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-
-        .info-card, .product-card { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .product-card { text-align: center; transition: transform 0.3s ease; }
-        .product-card:hover { transform: translateY(-5px); border-color: #00ff88; }
-        .product-card .phone-icon { font-size: 3rem; margin-bottom: 1rem; }
-
-        .contact-form { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; color: #00ff88; }
-        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; color: white; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #00ff88; }
-
-        /* Footer */
-        .footer { background: rgba(10,10,10,0.8); padding: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-
-        /* Animations */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .floating-elements { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
-        .floating-elements::before, .floating-elements::after {
-            content: ''; position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,255,136,0.1), transparent); border-radius: 50%; animation: float 6s ease-in-out infinite;
-        }
-        .floating-elements::before { top: 20%; left: 10%; animation-delay: 0s; }
-        .floating-elements::after { bottom: 20%; right: 10%; animation-delay: 3s; }
-        @keyframes float { 0%,100%{transform:translateY(0px);}50%{transform:translateY(-20px);} }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links { display: none; position: fixed; top: 60px; left: 0; width: 100%; flex-direction: column; gap: 1rem; background: rgba(10,10,10,0.95); padding: 1rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
-            .nav-links.active { display: flex; }
-
-            .hero { flex-direction: column; text-align: center; }
-            .hero h1 { font-size: 2.5rem; }
-            .phone-mockup { width: 250px; height: 500px; }
-            .phone-screen { width: 220px; height: 440px; }
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+    (function() {
+        emailjs.init("cuhKuwNkRr1j5y6eO"); // replace with your EmailJS public key
+    })();
+    </script>
 </head>
 <body>
-    <div class="floating-elements"></div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Kiss Mobile</div>
+            <div class="logo-container">
+                <img src="Images/Logo.png" class="logo-image"/>
+            </div>
             <div class="hamburger" onclick="toggleNav()">☰</div>
             <ul class="nav-links">
                 <li><a href="#" onclick="showSection('home')" class="active">Home</a></li>
-                <li><a href="#" onclick="showSection('about')">About</a></li>
+                <li><a href="#" onclick="showSection('about')">About us</a></li>
+                <li><a href="#" onclick="showSection('vision-mission')">Vision & Mission</a></li>
                 <li><a href="#" onclick="showSection('products')">Products</a></li>
+                <li><a href="#" onclick="showSection('csr')">CSR</a></li>
                 <li><a href="#" onclick="showSection('contact')">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <div class="hero">
-                <div class="hero-content">
-                    <p style="font-family: 'Brush Script MT', cursive; color: #00ff88; font-size: 4.8rem;">Enhancing your Satisfaction</p>
-                    <p>We are Sri Lanka’s trusted B2B partner, importing premium iPhones and accessories with excellence, reliability, and innovation, delivering unmatched service and long-term value-driven partnerships to redefine the wholesale industry.</p>
-                    <div class="hero-buttons">
-                        <button class="btn-primary" onclick="showSection('products')">Shop Now</button>
-                        <button class="btn-outline" onclick="showSection('about')">Learn More</button>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
-                            <div style="color: #00ff88; font-weight: bold;">Latest Models</div>
-                            <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Premium Quality</div>
-                            <div style="background: #00ff88; color: black; padding: 0.5rem 1rem; border-radius: 15px; margin-top: 1rem;">Available Now</div>
-                        </div>
-                    </div>
+    <!-- Home Section -->
+     <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-image-container">
+                <img src="Images/bgnew.jpg"/>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Enhancing Your Satisfaction</h1>
+                <p class="hero-description">Kiss Mobile specializes in premium pre-owned Apple, Android devices and brand new key pad phones along with high-quality accessories sourced from Hong Kong and Thailand.Operating on a B2B model in Sri Lanka, we lead with integrity, innovation, and a commitment to trusted service.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showSection('products')">Shop Now</button>
+                    <a href="#" class="btn-outline" onclick="showSection('about')">Learn More</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="content-section">
             <div class="section-header">
-                <h2>About Kiss Mobile</h2>
-                <p>Your trusted partner in mobile technology</p>
+                <h2 class="section-title">About Us</h2>
             </div>
+            <div class="about-section">
+                <p>Founded in 2023, Kiss Mobile Pvt Ltd is a dynamic and rapidly growing private limited company in Sri Lanka, incorporated under the Companies Act No. 07 of 2007.</p><br/>
+                <p>We specialize in importing and wholesaling high-quality pre-owned Apple devices, selected premium smartphones, brand-new keypad phones, and superior mobile accessories sourced directly from Hong Kong and Thailand.</p><br/>
+                <p>Our operations are driven by strategic-level management under the guidance of highly experienced marketing professionals, ensuring a perfect blend of innovation, quality, and customer satisfaction.</p><br/>
+                <p>As one of the fastest-growing companies in the mobile industry, Kiss Mobile Pvt Ltd is deeply committed to Corporate Social Responsibility (CSR), continuously working toward sustainable growth built on trust, integrity, and community engagement.</p><br/>
+                <p>We stand out in the market by offering our partners to inimitable dealer service,minimizing product returns,fast and reliable supply chain, ensuring repeat sales from dealers and create values for end-users,s satisfaction as marketing-driven professional team</p><br/>
+                <p>At Kiss Mobile Pvt Ltd, we don’t just sell devices — we build lasting connections and empower your business growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision/Mission Section -->
+    <section id="vision-mission" class="section">
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Our Vision & Mission</h2>
             <div class="info-grid">
                 <div class="info-card">
                     <h3>Our Vision</h3>
-                    <p>To be Sri Lanka’s most differentiated and trusted B2B partner in the mobile phone and accessories industry by delivering premium international products, unparalleled service, and innovative strategies that redefine wholesaling.</p>
+                    <p>To be Sri Lanka's most differentiated and trusted B2B partner in the mobile phone and accessories industry by delivering premium international products, unparalleled service, and innovative strategies that redefine wholesaling.</p>
                 </div>
                 <div class="info-card">
                     <h3>Our Mission</h3>
@@ -184,61 +86,122 @@
                     <p>We specialize in flagship smartphones, budget devices, accessories, repairs, and mobile solutions for both personal and business use.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Products Section -->
-        <section id="products" class="section">
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <div class="content-section">
             <div class="section-header">
-                <h2>Our Products</h2>
-                <p>Explore our wide range of premium mobile devices and accessories</p>
+                <h2 class="section-title">Our Products</h2>
+                <p class="section-subtitle">Explore our wide range of premium mobile devices and accessories</p>
             </div>
             <div class="product-grid">
                 <div class="product-card">
-                    <div class="phone-icon">🍎</div>
-                    <h3>iPhone Series</h3>
-                    <p>Latest iPhone models with advanced features, superior camera quality, and seamless iOS experience.</p>
-                    <div style="margin-top: 1rem; color: #00ff88;">Starting from $699</div>
+                    <div class="product-image">
+                        <img src="Images/iphone.png"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">iPhone Series</h3>
+                        <p class="product-description">Latest iPhone models with advanced features, superior camera quality, and seamless iOS experience.</p>
+                        <div class="product-price">Starting from $699</div>
+                    </div>
                 </div>
                 <div class="product-card">
-                    <div class="phone-icon">🤖</div>
-                    <h3>Android Flagship</h3>
-                    <p>Premium Android devices from Samsung, Google, OnePlus, and more with cutting-edge technology.</p>
-                    <div style="margin-top: 1rem; color: #00ff88;">Starting from $599</div>
+                    <div class="product-image">
+                        <img src="Images/android.png"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Android Flagship</h3>
+                        <p class="product-description">Premium Android devices from Samsung, Google, OnePlus, and more with cutting-edge technology.</p>
+                        <div class="product-price">Starting from $599</div>
+                    </div>
                 </div>
                 <div class="product-card">
-                    <div class="phone-icon">💰</div>
-                    <h3>Budget Phones</h3>
-                    <p>Affordable smartphones that don't compromise on essential features and performance.</p>
-                    <div style="margin-top: 1rem; color: #00ff88;">Starting from $199</div>
+                    <div class="product-image">
+                         <img src="Images/btnphone.png"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Budget Phones</h3>
+                        <p class="product-description">Affordable smartphones that don't compromise on essential features and performance.</p>
+                        <div class="product-price">Starting from $199</div>
+                    </div>
                 </div>
                 <div class="product-card">
-                    <div class="phone-icon">🎧</div>
-                    <h3>Accessories</h3>
-                    <p>Cases, screen protectors, chargers, headphones, and other mobile accessories.</p>
-                    <div style="margin-top: 1rem; color: #00ff88;">Starting from $15</div>
+                    <div class="product-image">
+                        <img src="Images/accessories.png"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Accessories</h3>
+                        <p class="product-description">Cases, screen protectors, chargers, headphones, and other mobile accessories.</p>
+                        <div class="product-price">Starting from $15</div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
+    <!-- Vision/Mission Section -->
+    <section id="csr" class="section">
+        <div class="content-section">
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <p>Get in touch with our expert team</p>
+            <h2 class="section-title">CSR</h2>
+           
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
             </div>
             <div class="info-grid">
+               <div class="info-card">
+                    <h3>Why us?</h3>
+                    <ul>
+                        <li>Inimitable dealer privileges</li>
+                        <li>Minimal product returns</li>
+                        <li>Fast, reliable supply chain</li>
+                        <li>Guaranteed repeat sales</li>
+                        <li>Marketing-driven team</li>
+                    </ul>
+                </div>
+                                   
+            <div class="info-card">
+            <h3>Drop your Message</h3>
+                <form id="contact-form" class="contact-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="user_name" placeholder="Enter your name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="user_email" placeholder="Enter your email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="user_phone" placeholder="Enter your phone number">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here" rows="5" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+                </div>
+
+                </div>
+            <div class="info-grid">
                 <div class="info-card">
-                    <a href="https://maps.app.goo.gl/cnHJTdtzP4XEetTF9?g_st=am" target="_blank" style="text-decoration:none; color:inherit;">
+                    <a href="https://maps.app.goo.gl/cnHJTdtzP4XEetTF9?g_st=am" target="_blank">
                         <h3>📍 View Location</h3>
                     </a>
-                    <p>Kiss Mobile Pvt LTD<br>Lake road,<br>Hewenpelessa,<br>Nikaweratiye ,Sri Lanka</p>
+                    <p>Kiss Mobile Pvt LTD<br>Lake road,<br>Hewenpelessa,<br>Nikaweratiye, Sri Lanka</p>
                 </div>
                 <div class="info-card">
-                   <h3>📞 Contact Details</h3>
+                    <h3>📞 Contact Details</h3>
                     <p>
-                        Phone: <a href="tel:+94773379795" style="text-decoration:none; color:inherit;">+94 77 3379 795</a><br>
-                        Email: <a href="mailto:kissmoble2024@gmail.com" style="text-decoration:none; color:inherit;">kissmoble2024@gmail.com</a><br>
-                        WhatsApp: <a href="https://wa.me/94773379795" target="_blank" style="text-decoration:none; color:inherit;">+94 77 3379 795</a>
+                        Phone: <a href="tel:+94773379795">+94 77 3379 795</a><br>
+                        Email: <a href="mailto:kissmoble2024@gmail.com">kissmoble2024@gmail.com</a><br>
+                        WhatsApp: <a href="https://wa.me/94773379795" target="_blank">+94 77 3379 795</a>
                     </p>
                 </div>
                 <div class="info-card">
@@ -246,25 +209,40 @@
                     <p>Monday - Saturday: 7:30 AM - 8:00 PM</p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p>&copy; 2025 Kiss Mobile Pvt Ltd. All rights reserved.</p>
+            <div class="footer-section">
+                <h3>Kiss Mobile</h3>
+                <p>Sri Lanka's trusted B2B partner in mobile technology, delivering premium products and exceptional service.</p>
             </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('about')">About us</a>
+                <a href="#" onclick="showSection('products')">Products</a>
+                <a href="#" onclick="showSection('contact')">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>+94 77 3379 795</p>
+                <p>kissmoble2024@gmail.com</p>
+                <p>Lake road, Hewenpelessa<br>Nikaweratiye, Sri Lanka</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kiss Mobile Pvt Ltd. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Toggle hamburger menu
         function toggleNav() {
             document.querySelector('.nav-links').classList.toggle('active');
         }
 
-        // Section navigation
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => section.classList.remove('active'));
@@ -275,12 +253,29 @@
             const activeLink = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
             if (activeLink) activeLink.classList.add('active');
 
-            // Close menu on mobile after click
             const navMenu = document.querySelector('.nav-links');
             if (navMenu.classList.contains('active') && window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
             }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const form = this;
+
+            emailjs.sendForm('service_itafeyf', 'template_d7ti47n', this)
+            .then(function() {
+                alert('Message sent successfully!');
+                form.reset(); 
+            }, function(error) {
+                alert('Failed to send message. Please try again.');
+                console.log('Error:', error);
+            });
+        });
+        </script>
 </body>
 </html>
