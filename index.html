@@ -12,6 +12,7 @@
         emailjs.init("cuhKuwNkRr1j5y6eO"); // replace with your EmailJS public key
     })();
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -20,33 +21,67 @@
             <div class="logo-container">
                 <img src="Images/Logo.png" class="logo-image"/>
             </div>
+
+            <div class="social-links" 
+                style="position: absolute; top: 0px; right: 20px; display: flex; gap: 8px;">
+            <a href="https://www.facebook.com/share/1F99FqdoyA/" target="_blank" aria-label="Facebook"
+                style="width: 24px; height: 24px; background: #3b5998; color: white; border-radius: 50%;
+                        display: flex; align-items: center; justify-content: center; text-decoration: none;
+                        font-size: 12px;">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/kiss-mobile-pvt-ltd/" target="_blank" aria-label="LinkedIn"
+                style="width: 24px; height: 24px; background: #0077b5; color: white; border-radius: 50%;
+                        display: flex; align-items: center; justify-content: center; text-decoration: none;
+                        font-size: 12px;">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/kissmobile_321?igsh=ejI3bzdrd3hnMmFw" target="_blank"
+                aria-label="Instagram"
+                style="width: 24px; height: 24px; background: #E4405F; color: white; border-radius: 50%;
+                        display: flex; align-items: center; justify-content: center; text-decoration: none;
+                        font-size: 16px;">
+                <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+
             <div class="hamburger" onclick="toggleNav()">☰</div>
             <ul class="nav-links">
-                <li><a href="#" onclick="showSection('home')" class="active">Home</a></li>
-                <li><a href="#" onclick="showSection('about')">About us</a></li>
-                <li><a href="#" onclick="showSection('vision-mission')">Vision & Mission</a></li>
-                <li><a href="#" onclick="showSection('products')">Products</a></li>
-                <li><a href="#" onclick="showSection('csr')">CSR</a></li>
-                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+            <li><a href="#" onclick="showSection('home')" class="active">Home</a></li>
+            <li><a href="#" onclick="showSection('about')">About us</a></li>
+            <li><a href="#" onclick="showSection('vision-mission')">Vision & Mission</a></li>
+            <li><a href="#" onclick="showSection('products')">Products</a></li>
+            <li><a href="#" onclick="showSection('csr')">CSR</a></li>
+            <li><a href="#" onclick="showSection('contact')">Contact</a></li>
             </ul>
+
         </div>
     </nav>
 
     <!-- Home Section -->
      <section id="home" class="section active">
         <div class="hero">
-            <div class="hero-image-container">
-                <img src="Images/testbg.jpg"/>
+            <div class="slideshow-track">
+                <img src="Images/bg3.jpg" alt="Slide 1"/>
+                <img src="Images/bg1.jpg" alt="Slide 2"/>
+                <img src="Images/bg2.jpg" alt="Slide 3"/>
+                <img src="Images/bg5.jpg" alt="Slide 3"/>
+                <img src="Images/bg4.jpg" alt="Slide 3"/>
+                <!-- Duplicate for seamless loop -->
+                <img src="Images/bg3.jpg" alt="Slide 1"/>
+                <img src="Images/bg1.jpg" alt="Slide 2"/>
+                <img src="Images/bg2.jpg" alt="Slide 3"/>
+                <img src="Images/bg5.jpg" alt="Slide 3"/>
+                <img src="Images/bg4.jpg" alt="Slide 3"/>
             </div>
             <div class="hero-overlay"></div>
+
             <div class="hero-content">
                 <h1 class="hero-title">Enhancing Your Satisfaction</h1>
-                <p class="hero-description">Kiss Mobile specializes in premium pre-owned Apple, Android devices and brand new key pad phones along with high-quality accessories sourced from Hong Kong and Thailand.Operating on a B2B model in Sri Lanka, we lead with integrity, innovation, and a commitment to trusted service.</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary" onclick="showSection('products')">Shop Now</button>
-                    <a href="#" class="btn-outline" onclick="showSection('about')">Learn More</a>
-                </div>
+                <p class="hero-description" style="font-weight: 700;">Kiss Mobile specializes in premium pre-owned Apple, Android devices and brand new key pad phones along with high-quality accessories sourced from Hong Kong and Thailand.Operating on a B2B model in Sri Lanka, we lead with integrity, innovation, and a commitment to trusted service.</p>
             </div>
+
+
         </div>
     </section>
 
@@ -56,7 +91,7 @@
             <div class="section-header">
                 <h2 class="section-title">About Us</h2>
             </div>
-            <div class="about-section">
+            <div class="about-us-section" style="text-align: justify;">
                 <p>Founded in 2023, Kiss Mobile Pvt Ltd is a dynamic and rapidly growing private limited company in Sri Lanka, incorporated under the Companies Act No. 07 of 2007.</p><br/>
                 <p>We specialize in importing and wholesaling high-quality pre-owned Apple devices, selected premium smartphones, brand-new keypad phones, and superior mobile accessories sourced directly from Hong Kong and Thailand.</p><br/>
                 <p>Our operations are driven by strategic-level management under the guidance of highly experienced marketing professionals, ensuring a perfect blend of innovation, quality, and customer satisfaction.</p><br/>
@@ -72,18 +107,14 @@
         <div class="content-section">
             <div class="section-header">
                 <h2 class="section-title">Our Vision & Mission</h2>
-            <div class="info-grid">
+            <div class="info-grid" style="text-align: justify;">
                 <div class="info-card">
                     <h3>Our Vision</h3>
-                    <p>To be Sri Lanka's most differentiated and trusted B2B partner in the mobile phone and accessories industry by delivering premium international products, unparalleled service, and innovative strategies that redefine wholesaling.</p>
+                    <p class="vm-cont">To be Sri Lanka's most differentiated and trusted B2B partner in the mobile phone and accessories industry by delivering premium international products, unparalleled service, and innovative strategies that redefine wholesaling.</p>
                 </div>
                 <div class="info-card">
                     <h3>Our Mission</h3>
                     <p>Import and distribute high-quality iPhones and mobile accessories from global markets, primarily Hong Kong and Thailand to Sri Lankan businesses with a commitment to excellence, reliability, and integrity. We strive to offer unique customer experiences through unmatched service, forward-thinking strategies, and a relentless focus on building long-term, value-driven partnerships that set us apart in the wholesale landscape.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Our Expertise</h3>
-                    <p>We specialize in flagship smartphones, budget devices, accessories, repairs, and mobile solutions for both personal and business use.</p>
                 </div>
             </div>
         </div>
@@ -96,45 +127,87 @@
                 <h2 class="section-title">Our Products</h2>
                 <p class="section-subtitle">Explore our wide range of premium mobile devices and accessories</p>
             </div>
+            <div class="product-grid" style="text-align: justify;">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/iphone.jpg"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-owned iPhone Series</h3>
+                        <p class="product-description">Latest pre-owned iPhone models with advanced features, superior camera quality, and seamless iOS experience.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/vivoy93.jpg"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-owned Vivo Y93</h3>
+                        <p class="product-description">Premium pre-owned Vivo Y93 devices coming from Hong Kong and Thailand.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                         <img src="Images/redmi9a.jpg"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-owned Redmi 9A</h3>
+                        <p class="product-description">Premium pre-owned Redmi 9A devices coming from Hong Kong and Thailand.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/nokia150.jpg"/>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Nokia 105 HMD</h3>
+                        <p class="product-description">Nokia 105 HMD global version with sealed pack.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="Images/iphone.png"/>
+                        <img src="Images/vivoy17.jpg"/>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">iPhone Series</h3>
-                        <p class="product-description">Latest iPhone models with advanced features, superior camera quality, and seamless iOS experience.</p>
-                        <div class="product-price">Starting from $699</div>
+                        <h3 class="product-title">Pre-owned Vivo Y17</h3>
+                        <p class="product-description">Premium pre-owned Vivo Y17 devices coming from Hong Kong and Thailand.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="Images/android.png"/>
+                        <img src="Images/we2keypad.jpg"/>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Android Flagship</h3>
-                        <p class="product-description">Premium Android devices from Samsung, Google, OnePlus, and more with cutting-edge technology.</p>
-                        <div class="product-price">Starting from $599</div>
+                        <h3 class="product-title">WE2 W102 keypad phones</h3>
+                        <p class="product-description">Brand new WE2 W102 with TRCSL Approved.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                         <img src="Images/btnphone.png"/>
+                        <img src="Images/airpods.jpg"/>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Budget Phones</h3>
-                        <p class="product-description">Affordable smartphones that don't compromise on essential features and performance.</p>
-                        <div class="product-price">Starting from $199</div>
+                        <h3 class="product-title">High Quality airpods</h3>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
                     </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="Images/accessories.png"/>
+                         <img src="Images/accessories.jpg"/>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Accessories</h3>
-                        <p class="product-description">Cases, screen protectors, chargers, headphones, and other mobile accessories.</p>
-                        <div class="product-price">Starting from $15</div>
+                        <h3 class="product-title">High Quality accessories</h3>
+                        <p class="product-description">High Quality selected mobile accessories.</p>
+                        <a href="#" onclick="showSection('contact')" class="product-price">Get wholesale price</a>
                     </div>
                 </div>
             </div>
@@ -200,7 +273,7 @@
                     <h3>📞 Contact Details</h3>
                     <p>
                         Phone: <a href="tel:+94773379795">+94 77 3379 795</a><br>
-                        Email: <a href="mailto:kissmoble2024@gmail.com">kissmoble2024@gmail.com</a><br>
+                        Email: <a href="mailto:kissmobile2024@gmail.com">kissmobile2024@gmail.com</a><br>
                         WhatsApp: <a href="https://wa.me/94773379795" target="_blank">+94 77 3379 795</a>
                     </p>
                 </div>
@@ -216,8 +289,12 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Kiss Mobile</h3>
-                <p>Sri Lanka's trusted B2B partner in mobile technology, delivering premium products and exceptional service.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showSection('products')">Shop Now</button>
+                    <a href="#" class="btn-outline" onclick="showSection('about')">Learn More</a>
+                </div>
+                <h3>Kiss Mobile Pvt Ltd</h3>
+                <p style="text-align: justify;">Sri Lanka's most trusted wholesale B2B partner in mobile technology, delivering premium products and exceptional service.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -228,10 +305,13 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>+94 77 3379 795</p>
-                <p>kissmoble2024@gmail.com</p>
-                <p>Lake road, Hewenpelessa<br>Nikaweratiye, Sri Lanka</p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+94773379795">+94 77 3379 795</a></p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:kissmobile2024@gmail.com">kissmobile2024@gmail.com</a></p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    <a href="https://maps.app.goo.gl/cnHJTdtzP4XEetTF9?g_st=am" target="_blank">
+                    Lake road, Hewenpelessa<br>Nikaweratiye, Sri Lanka</a> </p>
             </div>
+
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Kiss Mobile Pvt Ltd. All rights reserved.</p>
@@ -279,3 +359,5 @@
         </script>
 </body>
 </html>
+
+<!-- completed -->
